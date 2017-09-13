@@ -1,0 +1,10 @@
+Package: snv.predict
+Title: snv.predict uses true and false positives to improve snvs called from single cell RNA-seq data.
+Version: 0.0.0.9000
+Authors@R: person("Richard", "Owen", email = "richard.owen@ludwig.ox.ac.uk", role = c("aut", "cre"))
+Description: snv.predict applies random forest, logisitic regression and support vector machine learning to improve snv calls from single cell RNA-seq data. True positives are defined by the user and syntehetic spike-ins are used for false positive data (curretnly ERCCs only).
+Depends: R (>= 3.4.1)
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1.9000
