@@ -39,7 +39,7 @@ snv.performance <- function(snv_data,classifiers=NULL,test_index=NULL,threshold=
   }
 
   x <- data[ind==1,]
-  names <- x[,c(1:4,ncol(x)-2,ncol(x)-1)]
+  names <- x[,c(1:4,ncol(x)-2,ncol(x))]
   x <- x[,5:(ncol(x)-3)]
   x <- x[,classifiers[,1]]
   y <- as.factor(names$snp_class)
