@@ -77,7 +77,7 @@ snv.performance <- function(snv_data,classifiers=NULL,test_index=NULL,threshold=
 
   #Predict with test data
   x <- data[ind==2,]
-  names <- x[,c(1:4,ncol(x)-2,ncol(x)-1)]
+  names <- x[,c(1:4,ncol(x)-2,ncol(x))]
   x <- x[,5:(ncol(x)-3)]
 
   if(is.null(classifiers)){
