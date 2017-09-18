@@ -14,7 +14,7 @@ snv.predict <- function(snv.summary,classifiers=NULL){
   require(ROCR)
   require(randomForest)
 
-x <- na.omit(snv.summary) 
+x <- na.omit(snv.summary)
 y <- as.factor(x$snp_class)
   
 if(!is.null(classifiers)){
@@ -22,7 +22,7 @@ if(!is.null(classifiers)){
   }
   
 if(is.null(classifiers)){
-    x <- x[,]
+    x <- x[,5:ncol(x)-2,]
   }
   
 print("tuning model")
@@ -38,11 +38,11 @@ mtry <- mtry[which.min(mtry$OOBError),]
 model <- randomForest(x,y,ntree=mtry$ntree,mtry=mtry$mtry)
 
 print("predicting snvs")
-x <- as.matrix(data[,5:(ncol(data)-2)])
+x <- as.matrix(snv.summary[,5:(ncol(snv.summary)-2)])
 
 model.prob <- predict(model, type="prob", newdata=x, probability=TRUE)
 
-x <- as.data.frame(cbind(data[,c(1:4,ncol(data))],model.prob))
+x <- as.data.frame(cbind(snv.summary[,c(1:4,ncol(snv.summary)-2,ncol(snv.summary))],model.prob))
 
 print("saving outputs")
 
